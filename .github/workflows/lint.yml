@@ -3,9 +3,9 @@ name: Lint
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
   push:
-    branches: [ ros2, ros2-devel, dashing-devel, foxy-devel ]
+    branches: [ ros2 ]
   pull_request:
-    branches: [ ros2, ros2-devel ]
+    branches: [ ros2 ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,8 +18,8 @@ jobs:
         distribution: [dashing]
     steps:
       - uses: actions/checkout@v2
-      - uses: ros-tooling/setup-ros@master
-      - uses: ros-tooling/action-ros-lint@master
+      - uses: ros-tooling/setup-ros@0.1.2
+      - uses: ros-tooling/action-ros-lint@0.0.6
         with:
           distribution: ${{ matrix.distribution }}
           linter: ${{ matrix.linter }}
@@ -41,8 +41,8 @@ jobs:
         distribution: [foxy]
     steps:
       - uses: actions/checkout@v2
-      - uses: ros-tooling/setup-ros@master
-      - uses: ros-tooling/action-ros-lint@master
+      - uses: ros-tooling/setup-ros@0.1.2
+      - uses: ros-tooling/action-ros-lint@0.0.6
         with:
           distribution: ${{ matrix.distribution }}
           linter: ${{ matrix.linter }}
